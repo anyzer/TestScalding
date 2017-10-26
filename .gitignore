@@ -1,0 +1,5 @@
+*.html
+*.log
+.idea
+.DS_Store
+target/
