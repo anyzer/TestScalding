@@ -201,6 +201,16 @@
     
     HDFS -> Files -> Block (default to 128M)
     
+    NameNode Meetadata: it a is perhaps the single most critical component in the HDFS architecture. Without it the filesystem is not accessible, usable, or
+                           recoverable. The NameNode’s metadata contains the critical link between blocks stored on each of the DataNodes’ respective filesystems 
+                           and their context within files and directories in the Hadoop virtual filesystem.
+                           
+                           NameNode simply uses its metadata to direct clients where to read and write data —specifically which DataNodes to interact with. 
+                           The clients then perform data operations directly with the specified DataNodes in the cluster.
+                           
+                           Objects in HDFS have associated ACLs, which define the owner of the object and permissions that the owner, groups, and others have to the object.
+                           These ACLs are part of the metadata structure as previously shown.
+    
     
     
     
