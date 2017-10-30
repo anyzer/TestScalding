@@ -37,6 +37,10 @@
    
    Check more commands for HDFS shell: http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#test
    
+7. ls 
+    * hadoop fs -ls hdfs://sandbox.hortonworks.com:8020/user/guoch/
+    * hadoop fs -ls /user/guoch (in ssh)
+   
    
    
    

@@ -25,14 +25,27 @@ class WordCountJob(args : Args) extends Job(args) {
     .groupBy('word) {_.size}
     .write(Tsv(args("output")))
 
-  // Upload File to HDFS
-//  val testfileName = "input.txt"
-//  val testText = "Example text"
-//
-//  val testfile = new File(testfileName)
-//
-//  HDFSFileService.removeFile(testfileName)
-//  HDFSFileService.saveFile(testfileName)
+//  // Upload File to HDFS
+  val testfileName = "src/main/resources/input.txt"
+  val testText = "Example text"
 
+  val testfile = new File(testfileName)
+
+  HDFSFileService.removeFile(testfileName)
+  HDFSFileService.saveFile(testfileName)
+
+  // Download File from HDFS
+//  val downloadFile = "download.txt"
+//  val outputStream = new FileOutputStream(new File(downloadFile))
+//  val in = HDFSFileService.getFile("shakespeare.txt")
+//  var b = new Array[Byte](1024)
+//  var numBytes = in.read(b)
+//
+//  while (numBytes > 0) {
+//    outputStream.write(b, 0, numBytes)
+//    numBytes = in.read(b)
+//  }
+//  outputStream.close()
+//  in.close()
 
 }
