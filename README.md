@@ -211,6 +211,7 @@
                            Objects in HDFS have associated ACLs, which define the owner of the object and permissions that the owner, groups, and others have to the object.
                            These ACLs are part of the metadata structure as previously shown.
     
+    Apache Flume: is a Hadoop ecosystem project originally developed by Cloudera designed to capture, transform, and ingest data into HDFS using one or more agents. 
     
     
     

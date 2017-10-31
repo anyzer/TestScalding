@@ -17,14 +17,30 @@ class WordCountJob(args : Args) extends Job(args) {
     .write(Tsv(args("output")))
 
 
-  val testfileName = "input.txt"
-  val testfilePath = "src/main/resources/"
+  // Upload File
+//  val testfileName = "input.txt"
+//  val testfilePath = "src/main/resources/"
+//
+//  val destinationPath = "/"
+//
+//  HDFSFileService.write(testfilePath + testfileName, destinationPath)
+//
+//  HDFSFileService.deleteFile("/input.txt")
 
-  val destinationPath = "/"
+  //Spark
+  val conf = new SparkConf()
+  conf.setMaster("local")
+  conf.setAppName("Word Count")
+  val sc = new SparkContext(conf)
 
-  HDFSFileService.write(testfilePath + testfileName, destinationPath)
+  val textFile = sc.textFile("hdfs:///tmp/shakespeare.txt")
 
-  HDFSFileService.deleteFile("/input.txt")
+  val counts = textFile.flatMap(line => line.split(" "))
+    .map(word => (word, 1))
+    .reduceByKey(_ + _)
 
+  counts.foreach(println)
+  println("Total Words: " + counts.count())
+  counts.saveAsTextFile("hdfs:///tmp/shakespeareWordCount")
 
 }
