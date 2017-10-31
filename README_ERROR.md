@@ -3,6 +3,12 @@
 
    Code can upload file to HDFS, but throw this error
    
-   TODO: Sort it out why 
-   
+   Add following in hdfs-site.xml 
+   '''
+   <property>
+        <name>dfs.client.use.datanode.hostname</name>
+        <value>true</value>
+   </property>
+   '''
+   Ref: https://streamsets.com/blog/quick-tip-resolving-minreplication-hadoop-fs-error/
    
