@@ -23,9 +23,5 @@ libraryDependencies ++= {
     , "org.apache.spark" %% "spark-core" % sparkVersion % "provided" withSources()
     , "org.slf4j" % "slf4j-api" % "1.7.25"
     , "org.slf4j" % "slf4j-simple" % "1.7.25" % "test"
-//    , "org.apache.spark" %% "spark-core_2.10" % "1.6.1.2.4.2.10-1"
-//    , "org.apache.spark" %% "spark-mllib_2.10" % "1.6.1.2.4.2.10-1"
-//    , "org.apache.spark" %% "spark-hive_2.10" % "1.6.1.2.4.2.10-1"
-//    , "org.apache.spark" %% "spark-streaming-kafka_2.10" % "1.6.1.2.4.2.10-1"
   )
 }
