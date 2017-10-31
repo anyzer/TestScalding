@@ -18,7 +18,8 @@
    
    This setting should be consistent with #5
    
-4. SSH to Hadoop Server: ssh root@127.0.0.1 -p 2222   
+4. SSH to Hadoop Server: ssh root@127.0.0.1 -p 2222
+   * Hortonworks: hadoop
 
 5. Hadoop Config file locaiton: /etc/hadoop/2.6.1.0-129/0/
    * 2.6.1.0-129 is Hadoop Version
@@ -45,10 +46,10 @@
 
    (1) Add this line of code to project/plugins.sbt: addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
    (2) Type: sbt assembly
-   (3) Copy the assembly over to the sandbox: scp -P 2222 ./target/scala-2.11/sparkTutorialScala-assembly-1.0.jar root@sandbox.hortonworks.com:/root
+   (3) Copy the assembly over to the sandbox: scp -P 2222 ./target/scala-2.11/TestScalding-assembly-1.0.jar root@sandbox.hortonworks.com:/root
    (4) Open a second terminal window and ssh into the sandbox: ssh -p 2222 root@sandbox.hortonworks.com
    (5) Use spark-submit to run our code. We need to specify the main class, the jar to run, and the run mode (local or cluster):
-       /usr/hdp/current/spark2-client/bin/spark-submit --class "main.scala.Main"  --master local ./sparkTutorialScala-assembly-1.0.jar
+       spark-submit --class "main.scala.Main"  --master local ./sparkTutorialScala-assembly-1.0.jar
    
 9. Debug code (Ref: https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/)   
    
