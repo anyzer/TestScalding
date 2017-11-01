@@ -212,8 +212,29 @@
                            These ACLs are part of the metadata structure as previously shown.
     
     Apache Flume: is a Hadoop ecosystem project originally developed by Cloudera designed to capture, transform, and ingest data into HDFS using one or more agents. 
+    In many cases you will need to establish interfaces to capture data produced from source systems in real time, such as web logs, or schedule batch snapshots from a relational database, 
+    such as a transaction processing system.
     
+    Sqoop: (which is a portmanteau for “sql-to-hadoop”) is a top-level ASF project designed to source data from a relational database and ingest this data into files
+    (typically delimited files) in HDFS. Sqoop can also be used to send data from Hadoop to a relational database, useful for sending results processed in Hadoop to an operational transaction processing
+    system. Sqoop integrates with Hive, which is a SQLabstraction to MapReduce and other processing technologies on the Hadoop platform. Sqoop can automatically create Hive tables from imported 
+    data from a RDBMS (Relational Database Management System) table.
     
+    Sqoop includes tools for the following operations:
+        * Listing databases and tables on a database system
+        * Importing a single table from a database system, including
+        * Specifying which columns to import
+        * Specifying which rows to import using a WHERE clause
+        * Importing data from one or more tables using a SELECT statement
+        * Incremental imports from a table on a database system (importing only what has changed since a known previous state)
+        * Exporting of data from HDFS to a table on a remote database system
+    
+    The server-based implementation of Sqoop is called Sqoop2.
+    More information on Sqoop including Sqoop2 (Sqoop-as-a-service) is available from any of the following sources:
+        * Apache Sqoop (http://sqoop.apache.org/)
+        * Cloudera (http://www.cloudera.com/)
+        * Hortonworks (http://hortonworks.com/)
+        * MapR (https://www.mapr.com/)
     
     
     
