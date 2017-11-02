@@ -21,6 +21,10 @@
 4. SSH to Hadoop Server: ssh root@127.0.0.1 -p 2222
    * Hortonworks: hadoop
    * Normally change to A123890a
+   * http://127.0.0.1:8888/#
+     account: raj_ops
+     password: raj_ops or hadoop
+     
 
 5. Hadoop Config file locaiton: /etc/hadoop/2.6.1.0-129/0/
    * 2.6.1.0-129 is Hadoop Version
