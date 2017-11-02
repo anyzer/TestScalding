@@ -138,37 +138,7 @@ object HDFSFileService {
     return true
   }
 
+  //TODO: 1. Lists the contents of a directory
+  //TODO: 2. Pattern access files
 
-//  def saveFile(fileName: String): Unit = {
-//    System.setProperty("HADOOP_USER_NAME", "cheng")
-//
-//    val file = new File(testfilePath + fileName)
-//    val out = fileSystem.create(new Path(file.getName))
-//    val in = new BufferedInputStream(new FileInputStream(file))
-//    var b = new Array[Byte](1024)
-//    var numBytes = in.read(b)
-//    while (numBytes > 0) {
-//      out.write(b, 0, numBytes)
-//      numBytes = in.read(b)
-//    }
-//    in.close()
-//    out.close()
-//  }
-//
-//  def removeFile(filename: String): Boolean = {
-//    val path = new Path(filename)
-//    fileSystem.delete(path, true)
-//  }
-//
-//  def getFile(filename: String): InputStream = {
-//    val path = new Path(filename)
-//    fileSystem.open(path)
-//  }
-//
-//  def createFolder(folderPath: String): Unit = {
-//    val path = new Path(folderPath)
-//    if (!fileSystem.exists(path)) {
-//      fileSystem.mkdirs(path)
-//    }
-//  }
 }
