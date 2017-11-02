@@ -8,6 +8,34 @@
     <artifactId>scalaMvnTest</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <scala.version>2.10.4</scala.version>
+        <main>scalding.examples.WordCountJob</main>
+        <targetJdk>1.6</targetJdk>
+        <slf4j.log4j12.version>1.6.2</slf4j.log4j12.version>
+        <junit.version>4.8.2</junit.version>
+        <maven-jar-plugin-version>2.3.1</maven-jar-plugin-version>
+        <cascading.version>2.5.2</cascading.version>
+        <hadoop.version>2.3.0-cdh5.0.3</hadoop.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>conjars.org</id>
+            <url>http://conjars.org/repo</url>
+        </repository>
+        <repository>
+            <id>cloudera-releases</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
@@ -17,83 +45,178 @@
         <dependency>
             <groupId>com.twitter</groupId>
             <artifactId>scalding-core_2.10</artifactId>
-            <version>0.16.0</version>
+            <version>0.12.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cascading</groupId>
+            <artifactId>cascading-hadoop</artifactId>
+            <version>${cascading.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cascading</groupId>
+            <artifactId>cascading-core</artifactId>
+            <version>${cascading.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cascading</groupId>
+            <artifactId>cascading-local</artifactId>
+            <version>${cascading.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.log4j12.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.log4j12.version}</version>
         </dependency>
     </dependencies>
 
     <build>
-        <!--<pluginManagement>-->
-            <plugins>
-                <plugin>
-                    <groupId>net.alchim31.maven</groupId>
-                    <artifactId>scala-maven-plugin</artifactId>
-                    <version>3.1.6</version>
-                </plugin>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
-                <plugin>
-                    <groupId>net.alchim31.maven</groupId>
-                    <artifactId>scala-maven-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>scala-compile-first</id>
-                            <phase>process-resources</phase>
-                            <goals>
-                                <goal>add-source</goal>
-                                <goal>compile</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>scala-test-compile</id>
-                            <phase>process-test-resources</phase>
-                            <goals>
-                                <goal>testCompile</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.1.6</version>
+            </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>compile</phase>
-                            <goals>
-                                <goal>compile</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-                <!--<plugin>-->
-                    <!--<artifactId>maven-assembly-plugin</artifactId>-->
-                    <!--<version>2.5.3</version>-->
-                    <!--<configuration>-->
-                        <!--<descriptorRefs>-->
-                            <!--<descriptorRef>jar-with-dependencies</descriptorRef>-->
-                        <!--</descriptorRefs>-->
-                        <!--<archive>-->
-                            <!--<manifest>-->
-                                <!--<mainClass>HelloWorld</mainClass>-->
-                            <!--</manifest>-->
-                        <!--</archive>-->
-                    <!--</configuration>-->
-                    <!--<executions>-->
-                        <!--<execution>-->
-                            <!--<phase>package</phase>-->
-                            <!--<goals>-->
-                                <!--<goal>single</goal>-->
-                            <!--</goals>-->
-                        <!--</execution>-->
-                    <!--</executions>-->
-                <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-            </plugins>
-        <!--</pluginManagement>-->
+            <!--<plugin>-->
+            <!--<artifactId>maven-assembly-plugin</artifactId>-->
+            <!--<version>2.5.3</version>-->
+            <!--<configuration>-->
+            <!--<descriptorRefs>-->
+            <!--<descriptorRef>jar-with-dependencies</descriptorRef>-->
+            <!--</descriptorRefs>-->
+            <!--<archive>-->
+            <!--<manifest>-->
+            <!--<mainClass>HelloWorld</mainClass>-->
+            <!--</manifest>-->
+            <!--</archive>-->
+            <!--</configuration>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+            <!--<goal>single</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>scalding-test-jar-with-libs-${project.version}</finalName>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.handlers</resource>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.schemas</resource>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>${main}</mainClass>
+                                </transformer>
+                            </transformers>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--mvn clean compile assembly:single-->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>WordCountJob</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+
+        </plugins>
 
 
     </build>
