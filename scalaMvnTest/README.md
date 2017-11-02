@@ -13,5 +13,7 @@
    * https://twitter.github.io/scalding/resources_for_learners.html
    
 5. Execute by java
-   * java -cp target/scalaMvnTest-1.0-SNAPSHOT-jar-with-dependencies.jar com.twitter.scalding.Tool WordCountJob --local --input "src/main/resources/input.txt" ––output "output.txt" -Xmx1024m
+   * mvn clean compile assembly:single
+   * java -cp target/scalaMvnTest-1.0-SNAPSHOT-jar-with-dependencies.jar com.twitter.scalding.Tool WordCountJob --local -Xmx1024m
+   * have some problem to pass parameters in command line
    * java -cp target/scalaMvnTest-1.0-SNAPSHOT.jar.jar com.twitter.scalding.Tool WordCountJob --local --input input.txt ––output output.txt -Xmx1024m
