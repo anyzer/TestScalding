@@ -144,6 +144,8 @@
     * Append the port number :8888 to your host address, open your browser, and access Sandbox Welcome page at http://_host_:8888/.
       
     In single machine, just replace _host_ with 127.0.0.1 (http://127.0.0.1:8888/#)
+    
+    Copy file to docker: docker cp sandbox-hdp:/root/build.out ~/workspace/
 
 (6) Get Word Count working
     * Execute MyTest
