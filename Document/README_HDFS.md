@@ -1,5 +1,5 @@
 1. HDFS write operation
-   * The HDFS Client requests to write a file block;
+   * The HDFS Client requests to write a file block;c
    * The NameNode responds to the Client with the DataNode to which to write the block
    * The Client requests to write the block to the specified DataNode
    * The DataNode opens a block replication pipeline with another DataNode in the cluster, and this process continues until all configured replicas are written
@@ -24,6 +24,8 @@
    * http://127.0.0.1:8888/#
      account: raj_ops
      password: raj_ops or hadoop
+   * http://127.0.0.1:8888/   => raj_ops/raj_ops or maria_dev/maria_dev
+   * https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/
      
 
 5. Hadoop Config file locaiton: /etc/hadoop/2.6.1.0-129/0/
