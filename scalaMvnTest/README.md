@@ -34,3 +34,9 @@
 8. Execute WordCount code in Hadoop Cluster
    * hadoop jar target/scalaMvnTest-1.0-SNAPSHOT-jar-with-dependencies.jar com.twitter.scalding.Tool WordCountJob --hdfs --input hdfs:///data/input --output hdfs:///data/output
    * Exception in thread "main" java.lang.NoSuchMethodException: WordCountJob.main([Ljava.lang.String;)
+   
+9. Useful youtube video: https://www.youtube.com/watch?v=fsrRbRGsnRk
+   
+   
+   
+   
