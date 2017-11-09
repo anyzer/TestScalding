@@ -37,6 +37,23 @@
    
 9. Useful youtube video: https://www.youtube.com/watch?v=fsrRbRGsnRk
    
+10. Pipe Operation
    
+   The syntax of the name operation is as follows:
+      pipe.name("new name")
+      
+   It gives a new name to the pipe. Associating a name to a pipe is useful for visualizing pipelines in a tool, 
+   and it is presented in a later chapter.
+   
+   The syntax of the debug operation is as follows: pipe.debug
+   
+   It provides pipe debugging information by printing out some pipe content on the screen.
+   
+   The syntax of the addTrap operation is as follows: pipe.addTrap(sink)
+   
+   It adds a trap that captures tuples that cause exceptions in any of the pipe operations and stores them in the  
+   lesystem. The actual exceptions are not captured, and there can be only one trap in a pipe.
+   
+    pipe.addTrap(Tsv("/project/error_folder/")
    
    

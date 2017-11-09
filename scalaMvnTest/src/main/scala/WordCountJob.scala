@@ -8,10 +8,19 @@ import scala.io.Source
 
 class WordCountJob(args : Args) extends Job(args) {
 
-TextLine(args("input"))//can also create sources that read directly from compressed files on HDFS
-    .flatMap('line -> 'word) {line : String => line.replaceAll("[,.]", "").toLowerCase.split("\\s+")}
-    .groupBy('word) {_.size}
-    .write(Tsv(args("output")))
+  val lines : TypedPipe[String] = TypedPipe.from(TextLine(args("input")))
+
+  lines.flatMap(_.split("\\s+"))
+    .groupBy { identity }
+    .size
+    .toTypedPipe
+    .write(TypedTsv[(String, Long)]("output"))
+
+
+//  TextLine(args("input"))//can also create sources that read directly from compressed files on HDFS
+//      .flatMap('line -> 'word) {line : String => line.replaceAll("[,.]", "").toLowerCase.split("\\s+")}
+//      .groupBy('word) {_.size}
+//      .write(Tsv(args("output")))
 
 
 
