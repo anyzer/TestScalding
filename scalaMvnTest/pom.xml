@@ -83,6 +83,32 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j.log4j12.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.joda</groupId>
+            <artifactId>joda-convert</artifactId>
+            <version>1.5</version>
+        </dependency>
+
+        <!-- JSON -->
+        <dependency>
+            <groupId>com.cloudphysics</groupId>
+            <artifactId>jerkson_2.10</artifactId>
+            <version>0.6.3</version>
+        </dependency>
+
+        <!-- Cascading 'Driven' monitoring tool -->
+        <dependency>
+            <groupId>driven</groupId>
+            <artifactId>driven-plugin</artifactId>
+            <version>1.0-eap-59</version>
+            <classifier>io</classifier>
+        </dependency>
     </dependencies>
 
     <build>

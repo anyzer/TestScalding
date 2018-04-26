@@ -21,6 +21,10 @@
     '''
     
     NOTE: In single machine, just replace {Host-Name} with 127.0.0.1
+    
+    '''
+    echo '127.0.0.1 sandbox.hortonworks.com' | sudo tee -a /private/etc/hosts
+    '''
  
 (4) Start Sandbox: create executable shell, and run it
     
@@ -145,7 +149,55 @@
       
     In single machine, just replace _host_ with 127.0.0.1 (http://127.0.0.1:8888/#)
     
+    Username: raj_ops
+    Password:
+    
     Copy file to docker: docker cp sandbox-hdp:/root/build.out ~/workspace/
+    
+    
+    (5.1) SSH Client
+        Use the SSH client of your choice:
+        
+        ssh root@127.0.0.1 -p 2222
+        
+        username/password: root / hadoop
+        
+        
+        If no SSH client is installed, use the built-in web client:
+        
+        http://127.0.0.1:4200
+        
+        Copy file from docker: docker cp sandbox-hdp:/root/build.out ~/workspace/
+        Copy file to docker:   docker cp ~/cookie.txt sandbox-hdp:/root/chen/
+        
+        
+    (5.2) Zeppelin
+        http://127.0.0.1:9995
+        
+        
+    (5.3) Ranger
+        http://127.0.0.1:6080     
+    
+        username & password: raj_ops
+                
+                
+    (5.4) WORKFLOW MANAGER
+        http://127.0.0.1:8080/#/main/views/WORKFLOW_MANAGER/1.0.0/workflow_manager
+        
+        username & password: raj_ops
+                        
+                        
+    (5.5) Ambari
+        http://127.0.0.1:8080
+        
+        Cluster Operator
+        username & password: raj_ops
+        
+        Ambari Admin 
+        Get instructions to set password
+        
+        Note: Ambari supports multiple roles
+
 
 (6) Get Word Count working
     * Execute MyTest
